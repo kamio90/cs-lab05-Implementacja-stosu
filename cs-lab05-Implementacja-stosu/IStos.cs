@@ -39,7 +39,7 @@ namespace cs_lab05_Implementacja_stosu
         T[] ToArray();
         
         //Implementacja indexera
-        T this[int index] { get; }
+        T this[int index] { get; } //
         
         //Ciachanie stosu 
         void Trim();
