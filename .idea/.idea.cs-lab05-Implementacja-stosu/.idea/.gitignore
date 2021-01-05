@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/modules.xml
+/.idea.cs-lab05-Implementacja-stosu.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\kamio90\Documents\Rider\cs-lab05-Implementacja-stosu\.idea\.idea.cs-lab05-Implementacja-stosu\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
