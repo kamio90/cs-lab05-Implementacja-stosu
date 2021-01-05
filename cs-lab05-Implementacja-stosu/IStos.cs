@@ -37,5 +37,11 @@ namespace cs_lab05_Implementacja_stosu
 
         //kopiuje i eksportuje stos do tablicy
         T[] ToArray();
+        
+        //Implementacja indexera
+        T this[int index] { get; }
+        
+        //Ciachanie stosu 
+        void Trim();
     }
 }

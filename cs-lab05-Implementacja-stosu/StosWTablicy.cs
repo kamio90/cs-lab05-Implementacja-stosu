@@ -51,5 +51,12 @@ namespace cs_lab05_Implementacja_stosu
                 temp[i] = tab[i];
             return temp;
         }
+
+        public T this[int index] => throw new NotImplementedException();
+
+        public void Trim()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
