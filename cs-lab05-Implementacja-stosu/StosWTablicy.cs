@@ -7,7 +7,7 @@ namespace cs_lab05_Implementacja_stosu
         private T[] tab;
         private int szczyt = -1;
 
-        public StosWTablicy(int size = 10)
+        public StosWTablicy(int size = 100)
         {
             tab = new T[size];
             szczyt = -1;
@@ -21,24 +21,19 @@ namespace cs_lab05_Implementacja_stosu
 
         public void Clear() => szczyt = -1;
 
-        public T Pop()
-        {
-            if (IsEmpty)
-                throw new StosEmptyException();
-
-            szczyt--;
-            return tab[szczyt + 1];
-        }
+        public T Pop() => IsEmpty ? throw new StosEmptyException() : tab[szczyt--];
 
         public void Push(T value)
         {
-            if (szczyt == tab.Length - 1)
+
+            if (Count + 1 >= tab.Length )
             {
-                Array.Resize(ref tab, tab.Length * 2);
+                var temp = new T[2 * Count];
+                Array.Copy(tab,temp, tab.Length);
+                tab = temp;
             }
 
-            szczyt++;
-            tab[szczyt] = value;
+            tab[++szczyt] = value;
         }
 
         public T[] ToArray()
@@ -54,9 +49,6 @@ namespace cs_lab05_Implementacja_stosu
 
         public T this[int index] => throw new NotImplementedException();
 
-        public void Trim()
-        {
-            throw new NotImplementedException();
-        }
+        public void Trim() => szczyt = (int)(Count * 0.9 - 1);
     }
 }
