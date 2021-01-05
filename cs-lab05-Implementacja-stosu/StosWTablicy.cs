@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace cs_lab05_Implementacja_stosu
 {
@@ -47,8 +49,60 @@ namespace cs_lab05_Implementacja_stosu
             return temp;
         }
 
-        public T this[int index] => throw new NotImplementedException();
+        public int TabLength => tab.Length;
 
-        public void Trim() => szczyt = (int)(Count * 0.9 - 1);
+        public T this[int index] => index > Count - 1 ? throw new IndexOutOfRangeException() : tab[index]; 
+
+        public void TrimExcess() => szczyt = (int)(Count * 0.9 - 1); //TODO: back to the function
+
+        private class EnumStos : IEnumerator<T>
+        {
+            private StosWTablicy<T> _stosWTablicy;
+            private int position = -1;
+
+            internal EnumStos(StosWTablicy<T> stosWTablicy) => this._stosWTablicy = stosWTablicy;
+
+            public T Current => _stosWTablicy.tab[position];
+
+            object IEnumerator.Current => Current;
+
+            public void Dispose()
+            {
+                throw new NotImplementedException();
+            }
+
+            public bool MoveNext()
+            {
+                if (position >= _stosWTablicy.Count - 1) return false;
+                position++;
+                return true;
+            }
+
+            public void Reset() => position = -1;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return this[i];
+            }
+        }
+
+        public IEnumerable<T> TopToBottom
+        {
+            get
+            {
+                for (int i = Count - 1; i >= 0; i--)
+                {
+                    yield return this[i];
+                }
+            }
+        }
+
+        public System.Collections.ObjectModel.ReadOnlyCollection<T> ToArrayReadOnly()
+        {
+            return Array.AsReadOnly(tab);
+        }
     }
 }

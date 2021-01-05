@@ -42,6 +42,6 @@ namespace cs_lab05_Implementacja_stosu
         T this[int index] { get; } //
         
         //Ciachanie stosu 
-        void Trim();
+        void TrimExcess();
     }
 }
